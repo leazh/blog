@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    赤鹿小组
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mt-2">
+        {% for article in articles %}
+            <div class="col-4 mb-4">
+                <div class="card h-auto">
+                    <h3 class="card-header "><a href="{% url 'blog:article_detail' article.id %}" class="active">{{ article.title}}</a></h3>
+                    <div class="nav-item card-body">
+                        <p class="card-text">
+
+                           {{ article.content|slice:'100' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

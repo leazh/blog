@@ -1,0 +1,5 @@
+Django==2.2.10
+mysqlclient==1.4.4
+markdown==3.2.1
+django-mdeditor==0.1.17
+Pygments==2.6.1

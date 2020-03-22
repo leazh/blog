@@ -1,0 +1,106 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/components_pro/layout6/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+
+<nav class="bk-horz-nav11">
+    <div class="bk-nav-logo fl">
+        <img src="/blog/static/images/logo.jpg">赤鹿小组
+    </div>
+    <div class="bk-nav-user fr">
+        <span class="mr5">Meszhang</span>
+        <img src="https://magicbox.bk.tencent.com/static_api/v3/components_pro/horizontal_nav1/images/avatar.png">
+    </div>
+
+
+    <ul class="bk-nav-links fr">
+        <li>
+            <a href={% url "blog:article_list" %}>首页</a>
+        </li>
+        <li>
+            <a href="javascript:;">运维技术</a>
+        </li>
+        <li>
+            <a href="javascript:;">监控安全</a>
+        </li>
+        <li class="bk-has-submenu">
+            <a href="javascript:;">运维自动化</a>
+            <ul class="bk-submenu">
+                <li>
+                    <a href="javascript:;">Jenkins</a>
+                </li>
+                <li>
+                    <a href="javascript:;">K8S</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Git</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">编程语言</a>
+        </li>
+
+        <li class="bk-has-submenu">
+            <a href="javascript:;">设计师手账</a>
+            <ul class="bk-submenu">
+                <li>
+                    <a href="javascript:;">苦逼经历分享</a>
+                </li>
+                <li>
+                    <a href="javascript:;">PS 实用小技巧</a>
+                </li>
+                <li>
+                    <a href="javascript:;">站长作品</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="page-content" style="min-width:850px;">
+    <div class="bg-white"> <!--bk-message-box :内容整体居中-->
+        <p class="message empty-message">
+            {% block content %}{% endblock %}
+        </p>
+    </div>
+</div>
+
+
+ <footer class="bk-footer">
+    <div class="bk-footer-links">
+        <ul>
+            <li>
+                <a href="###">QQ 咨询</a>
+            </li>
+            <li>
+                <a href="###">加入我们</a>
+            </li>
+            <li>
+                <a href="###">联系我们</a>
+            </li>
+        </ul>
+    </div>
+    <p class="bk-footer-copyright">
+        Copyright © 2019-2020 ChiLu Group. All Rights Reserved. 赤鹿小组 版权所有
+    </p>
+</footer>
+
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'popper/popper.js' %}"></script>
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+</body>
+</html>
