@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from blog.models import Article
 import markdown
@@ -27,16 +27,16 @@ def article_detail(request, blog_id):
     :return:
     """
     # 取出相应的文章
-    details = get_object_or_404(Article, id=blog_id)
-    details.content = markdown.markdown(
-        details.content,
+    articles = get_object_or_404(Article, id=blog_id)
+    articles.content = markdown.markdown(
+        articles.content,
         extensions={
             'markdown.extensions.extra',    # 包含 缩写、表格等常用扩展
             'markdown.extensions.codehilite',  # 语法高亮扩展
             'markdown.extensions.toc',
         })
     context = {
-        'detail': details,
+        'article': articles,
     }
     return render(request, 'article/article_details.html', context)
 
@@ -87,9 +87,11 @@ def delete_article(request, blog_id):
     del_article.delete()
     return redirect("blog:article_list")
 
+
 def modify_article(request, blog_id):
     """
     更新文章页面
+    :param blog_id:
     :param request:
     :return:
     """
@@ -100,10 +102,13 @@ def modify_article(request, blog_id):
             article.title = request.POST['title']
             article.content = request.POST['content']
             article.save()
-            return redirect("blog:article_detail", id=blog_id)
+            return redirect("blog:article_detail", blog_id=blog_id)
         else:
-            return HttpResponse("表单内容有误，请重新填写")
+            return HttpResponse("填写有误，请重新填写")
     else:
         post_article = ArticleForm()
-        context = {'article': article, 'post_article': post_article}
+        context = {
+            'article': article, 
+            "post_article": post_article,
+            }
         return render(request, "article/update_article.html", context)

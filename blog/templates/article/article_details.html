@@ -6,15 +6,15 @@
 
 {% block content %}
 <div class="container">
-    <p>赤鹿小组 > {{ detail.title }}</p>
+    <p>赤鹿小组 > {{ article.title }}</p>
         <div class="row ">
-            <h1 class="col-12 mt-4 mb-4 bk-message-box">{{ detail.title }}</h1>
+            <h1 class="col-12 mt-4 mb-4 bk-message-box">{{ article.title }}</h1>
                 <div class="col-12 alert-success alert bk-message-box">
-                    Author：{{ detail.author }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建时间：{{ detail.create_time|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新时间：{{ detail.update_time|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url "blog:delete_article" detail.id %}" class="btn">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url "blog:modify_article" detail.id %}" class="btn">编辑</a>
+                    Author：{{ article.author }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建时间：{{ article.create_time|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新时间：{{ article.update_time|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url "blog:delete_article" article.id %}" class="btn">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url "blog:update_article" article.id %}" class="btn">编辑</a>
                 </div>
             <div class="col-12">
                 <p class="col-lg-12">
-                    {{ detail.content|safe }}
+                    {{ article.content|safe }}
                 </p>
             </div>
         </div>
