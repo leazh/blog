@@ -22,5 +22,6 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'', article_list),
     path(r'article/', include('blog.urls', 'blog')),
+    path(r'login/', include('user/urls', 'user')),
 
 ]
