@@ -7,7 +7,7 @@ from blog.models import Article
 
 class ArticleForm(forms.ModelForm):
     """
-    文章编写表单类
+    编写文章表单类
     """
     # 格式需要是Meta，否则会报错
     class Meta:

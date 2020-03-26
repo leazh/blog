@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load staticfiles  %}
 {% block title %}
     赤鹿小组
 {% endblock %}
@@ -8,17 +8,40 @@
 <div class="container">
     <div class="mt-2">
         {% for article in articles %}
-            <div class="col-4 mb-4">
-                <div class="card h-auto">
-                    <h3 class="card-header "><a href="{% url 'blog:article_detail' article.id %}" class="active">{{ article.title}}</a></h3>
-                    <div class="nav-item card-body">
-                        <p class="card-text">
-
-                           {{ article.content|slice:'100' }}
-                        </p>
+            <!--调整card显示像素-->
+            <div class="card mb-3" style="max-width: 1000px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <!--文章特色图片，后面将以变量存在-->
+                    <img src="../../static/images/logo.jpg" class="card-img">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <!--点击文章标题跳转至文章详情-->
+                      <h2 class="card-title"><a style="text-decoration: none;" href="{% url 'blog:article_detail' article.id %}" class="active">{{ article.title}}</a></h2>
+                      <p>
+                        <small class="text-muted">
+                            <!--django时间格式化-->
+                            <time>
+                                <i class="glyphicon glyphicon-time"></i>&nbsp;{{ article.create_time|date:"Y-m-d" }}&nbsp;
+                            </time>
+                            <span class="author">
+                                <i class="glyphicon glyphicon-user"></i>&nbsp;{{ article.author }}&nbsp;
+                            </span>
+                            <span>
+                                <i class="glyphicon glyphicon-eye-open">&nbsp;阅读数&nbsp;</i>
+                            </span>
+                            <span>
+                                <i class="glyphicon glyphicon-comment">&nbsp;评论&nbsp;</i>
+                            </span>
+                        </small>
+                    </p>
+                    <!--取内容的前100个字符-->
+                      <p class="card-text">{{ article.content|slice:'100' }}</p>
                     </div>
+                  </div>
                 </div>
-            </div>
+              </div>
         {% endfor %}
     </div>
 </div>
