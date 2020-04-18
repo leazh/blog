@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-# Author Meszhang
+# Author Seichung
 
 from django import forms
 from blog.models import Article
