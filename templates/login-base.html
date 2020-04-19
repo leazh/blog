@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/components_pro/layout6/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'login/login.css' %}">
+</head>
+
+<body>
+
+    <div style="min-width:850px;">
+            <!--bk-message-box :内容整体居中-->
+            {% block content %}{% endblock %}
+    </div>
+
+
+    <footer class="bk-footer">
+        <div class="bk-footer-links">
+            <ul>
+                <li>
+                    <a href="###">QQ 咨询</a>
+                </li>
+                <li>
+                    <a href="###">加入我们</a>
+                </li>
+                <li>
+                    <a href="###">联系我们</a>
+                </li>
+            </ul>
+        </div>
+        <p class="bk-footer-copyright">
+            Copyright © 2019-2020 ChiLu Group. All Rights Reserved. 赤鹿小组 版权所有
+        </p>
+    </footer>
+
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # 引入创建好的 form 表单
 from .form import UserLoginForm
 # Create your views here.
@@ -24,7 +24,7 @@ def user_login(request):
             #验证用户信息,并返回user对象
             user = authenticate(
                 username = data['username'],
-                paasword = data['password']
+                password = data['password']
             )
             # 判断用户是否登录
             if user:
@@ -32,7 +32,7 @@ def user_login(request):
                 login(request, user)
 
                 # 登录后则返回到文章页面
-                return redirect("article:article_list.html")
+                return redirect("blog:article_list")
             else:
                 return HttpResponse("账户名或者密码有误,请重新输入")
         else:
@@ -45,3 +45,8 @@ def user_login(request):
         return render(request, 'user/login.html', context)
     else:
         return HttpResponse("请求方式有误,请使用 'GET' 或者 'POST'请求数据")
+
+
+def user_logout(request):
+    logout(request)
+    return redirect("blog:article_list")
