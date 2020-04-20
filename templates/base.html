@@ -11,6 +11,7 @@
     <link href="https://magicbox.bk.tencent.com/static_api/v3/components_pro/layout6/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'login/login.css' %}">
 </head>
 
 <body>
@@ -49,10 +50,6 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;">编程语言</a>
-            </li>
-
             <li class="bk-has-submenu">
                 <a href="javascript:;">设计师手账</a>
                 <ul class="bk-submenu">
@@ -66,11 +63,27 @@
                         <a href="javascript:;">站长作品</a>
                     </li>
                 </ul>
+                <!-- 用户是否登陆 -->
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url "user:logout" %}">退出登录</a>
+                    </div>
+                </li>
+                <!-- 如果用户未登录，则显示 “登录” -->
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user:login' %}">登陆</a>
+                </li>
+                {% endif %}
             </li>
         </ul>
     </nav>
 
-
+    <!-- 正文内容 -->
     <div class="page-content" style="min-width:850px;">
         <div class="bg-white">
             <!--bk-message-box :内容整体居中-->
