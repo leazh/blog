@@ -12,3 +12,5 @@ class ArticleDisplay(admin.ModelAdmin):
 
 
 admin.site.register(Article, ArticleDisplay)
+admin.site.site_header = "赤鹿小组"
+admin.site.site_title = "赤鹿小组后台管理"
